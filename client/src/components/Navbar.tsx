@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [location, setLocation] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -14,18 +15,33 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Work", href: "#work" },
-    { name: "Clients", href: "#clients" },
-    { name: "Contact", href: "#contact" },
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/#services" },
+    { name: "Work", href: "/#work" },
+    { name: "Clients", href: "/#clients" },
+    { name: "Contact", href: "/#contact" },
   ];
 
-  const scrollToSection = (id: string) => {
-    const element = document.querySelector(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
+  const handleNavClick = (href: string) => {
+    setIsMenuOpen(false);
+    
+    if (href.startsWith("/#")) {
+      // If we are not on home page, navigate to home first
+      if (location !== "/") {
+        setLocation("/");
+        // Wait for navigation then scroll
+        setTimeout(() => {
+          const element = document.querySelector(href.substring(1));
+          if (element) element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      } else {
+        // If already on home page, just scroll
+        const element = document.querySelector(href.substring(1));
+        if (element) element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Normal navigation (e.g. to /about)
+      setLocation(href);
     }
   };
 
@@ -54,7 +70,7 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <button
                 key={link.name}
-                onClick={() => scrollToSection(link.href)}
+                onClick={() => handleNavClick(link.href)}
                 className="text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-primary transition-colors relative group overflow-hidden"
               >
                 <span className="relative z-10">{link.name}</span>
@@ -90,7 +106,7 @@ export default function Navbar() {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: 50, opacity: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  onClick={() => scrollToSection(link.href)}
+                  onClick={() => handleNavClick(link.href)}
                   className="text-5xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 hover:to-primary transition-all"
                 >
                   {link.name}
