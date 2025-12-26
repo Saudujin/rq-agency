@@ -9,7 +9,7 @@ export default function ClientsPage() {
     "/images/Rq-client-2.webp",
     "/images/Rq-client-3.webp",
     "/images/Rq-client-4.webp",
-    "/images/8qisYQcAQIGujSiV-1024x404.png",
+
     "/images/Rq-client-11.webp",
     "/images/Rq-client-10.webp",
     "/images/Rq-client-9.webp",
