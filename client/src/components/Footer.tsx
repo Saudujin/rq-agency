@@ -12,13 +12,13 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#050B14] pt-32 pb-12 border-t border-white/5 relative overflow-hidden">
+    <footer className="bg-[#050B14] pt-16 md:pt-32 pb-8 md:pb-12 border-t border-white/5 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50" />
       <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" />
       
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 mb-12 md:mb-24">
           
           {/* Brand Column */}
           <div className="lg:col-span-5 space-y-8">
@@ -40,11 +40,11 @@ export default function Footer() {
 
           {/* Links Column */}
           <div className="lg:col-span-3 lg:col-start-7">
-            <h4 className="text-white font-bold mb-8 text-lg tracking-wider flex items-center gap-3">
+            <h4 className="text-white font-bold mb-4 md:mb-8 text-lg tracking-wider flex items-center gap-3">
               <span className="w-8 h-[2px] bg-primary"></span>
               EXPLORE
             </h4>
-            <ul className="space-y-4">
+            <ul className="space-y-2 md:space-y-4 grid grid-cols-2 md:block gap-x-4">
               {links.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-gray-400 hover:text-primary hover:pl-2 transition-all duration-300 cursor-pointer block text-lg">
@@ -57,30 +57,30 @@ export default function Footer() {
 
           {/* Contact Column */}
           <div className="lg:col-span-3">
-            <h4 className="text-white font-bold mb-8 text-lg tracking-wider flex items-center gap-3">
+            <h4 className="text-white font-bold mb-4 md:mb-8 text-lg tracking-wider flex items-center gap-3">
               <span className="w-8 h-[2px] bg-primary"></span>
               CONNECT
             </h4>
-            <ul className="space-y-6 text-gray-400">
-              <li className="group">
+            <ul className="flex flex-wrap md:block gap-6 md:gap-0 space-y-0 md:space-y-6 text-gray-400">
+              <li className="group w-full md:w-auto">
                 <span className="block text-xs uppercase tracking-widest text-gray-600 mb-1 group-hover:text-primary transition-colors">Email</span>
-                <a href="mailto:info@rq.com.sa" className="text-xl text-white hover:text-primary transition-colors font-medium">
+                <a href="mailto:info@rq.com.sa" className="text-lg md:text-xl text-white hover:text-primary transition-colors font-medium">
                   info@rq.com.sa
                 </a>
               </li>
-              <li className="group">
+              <li className="group w-1/2 md:w-auto">
                 <span className="block text-xs uppercase tracking-widest text-gray-600 mb-1 group-hover:text-primary transition-colors">Phone</span>
-                <a href="tel:0550587977" className="text-xl text-white hover:text-primary transition-colors font-medium">
+                <a href="tel:0550587977" className="text-lg md:text-xl text-white hover:text-primary transition-colors font-medium">
                   0550587977
                 </a>
               </li>
-              <li className="group">
+              <li className="group w-1/2 md:w-auto">
                 <span className="block text-xs uppercase tracking-widest text-gray-600 mb-1 group-hover:text-primary transition-colors">Location</span>
-                <span className="text-xl text-white font-medium">Riyadh, Saudi Arabia</span>
+                <span className="text-lg md:text-xl text-white font-medium">Riyadh, KSA</span>
               </li>
             </ul>
 
-            <div className="flex gap-4 mt-10">
+            <div className="flex justify-center md:justify-start gap-4 mt-8 md:mt-10">
               {[
                 { icon: Twitter, href: "https://x.com/rqmarketing_?s=21&t=zqo9xIkDYvxTWGPc23v41Q" },
                 { icon: Instagram, href: "https://www.instagram.com/rqmarketing_?igsh=ZWs0cjd4cHF5YnQy" },

@@ -65,20 +65,20 @@ export default function Work() {
     : works.filter(work => work.category === activeCategory);
 
   return (
-    <section id="work" className="py-24 bg-background">
+    <section id="work" className="py-16 md:py-24 bg-background">
       <div className="container">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 text-left">
           <div>
-            <h2 className="text-sm font-bold text-primary uppercase tracking-widest mb-4">
+            <h2 className="text-xs md:text-sm font-bold text-primary uppercase tracking-widest mb-2 md:mb-4">
               Recent Works
             </h2>
-            <h3 className="text-4xl md:text-6xl font-bold leading-tight text-white">
+            <h3 className="text-3xl md:text-6xl font-bold leading-tight text-white">
               Brand Stories
             </h3>
           </div>
 
           {/* Filter Buttons */}
-          <div className="flex gap-4 mt-8 md:mt-0">
+          <div className="flex gap-2 md:gap-4 mt-6 md:mt-0 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto scrollbar-hide">
             {categories.map((category) => (
               <button
                 key={category}
@@ -86,7 +86,7 @@ export default function Work() {
                   setActiveCategory(category);
                   setPlayingVideo(null);
                 }}
-                className={`px-6 py-2 rounded-full border transition-all duration-300 text-sm font-bold uppercase tracking-wider ${
+                className={`px-4 md:px-6 py-2 rounded-full border transition-all duration-300 text-xs md:text-sm font-bold uppercase tracking-wider whitespace-nowrap ${
                   activeCategory === category
                     ? "bg-primary border-primary text-black"
                     : "border-white/20 text-gray-400 hover:border-primary hover:text-primary"
@@ -98,9 +98,57 @@ export default function Work() {
           </div>
         </div>
 
+        {/* Mobile Horizontal Scroll */}
+        <div className="md:hidden flex overflow-x-auto pb-8 gap-4 snap-x snap-mandatory -mx-4 px-4 scrollbar-hide">
+          {filteredWorks.map((work) => (
+            <div
+              key={work.id}
+              className="min-w-[300px] snap-center group"
+            >
+              <div className="aspect-video w-full bg-zinc-900 border border-white/10 overflow-hidden mb-4 relative rounded-lg">
+                {playingVideo === work.id ? (
+                  <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src={work.videoUrl} 
+                    title={work.title}
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowFullScreen
+                    className="w-full h-full"
+                  ></iframe>
+                ) : (
+                  <div 
+                    className="w-full h-full relative cursor-pointer group"
+                    onClick={() => setPlayingVideo(work.id)}
+                  >
+                    <img 
+                      src={work.thumbnail} 
+                      alt={work.title} 
+                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
+                      <div className="w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center shadow-lg">
+                        <Play className="w-5 h-5 text-black fill-black ml-1" />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div>
+                <span className="text-primary text-[10px] font-bold uppercase tracking-widest mb-1 block">
+                  {work.category}
+                </span>
+                <h4 className="text-lg font-bold text-white">{work.title}</h4>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop Grid */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           <AnimatePresence mode="popLayout">
             {filteredWorks.map((work) => (

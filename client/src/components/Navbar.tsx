@@ -89,28 +89,25 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Fullscreen Menu Overlay */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-background flex items-center justify-center"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-[80px] left-0 right-0 z-40 bg-[#050B14]/95 backdrop-blur-xl border-b border-white/10 shadow-2xl md:hidden"
           >
-            <div className="flex flex-col gap-8 text-center">
-              {navLinks.map((link, index) => (
-                <motion.button
+            <div className="flex flex-col p-6 gap-4">
+              {navLinks.map((link) => (
+                <button
                   key={link.name}
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 50, opacity: 0 }}
-                  transition={{ delay: index * 0.1 }}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-5xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 hover:to-primary transition-all"
+                  className="text-left text-lg font-bold text-white hover:text-primary transition-colors py-2 border-b border-white/5 last:border-0"
                 >
                   {link.name}
-                </motion.button>
+                </button>
               ))}
             </div>
           </motion.div>
