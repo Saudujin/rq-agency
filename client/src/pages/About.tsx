@@ -28,31 +28,35 @@ export default function AboutPage() {
       <section className="py-24 border-t border-white/5">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-            <div className="md:col-span-4 relative">
+            <div className="md:col-span-5 relative">
               <h2 className="text-sm font-bold text-primary uppercase tracking-widest mb-8">
                 Who We Are
               </h2>
               
-              {/* Image with Frame */}
+              {/* Image with Premium Geometric Frame */}
               <motion.div 
-                initial={{ opacity: 0, rotate: -5, scale: 0.9 }}
-                whileInView={{ opacity: 1, rotate: -3, scale: 1 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="relative z-10"
+                transition={{ duration: 0.8 }}
+                className="relative group"
               >
-                <div className="absolute inset-0 border-2 border-primary translate-x-4 translate-y-4 rounded-lg z-0" />
-                <div className="relative z-10 rounded-lg overflow-hidden border border-white/10 shadow-2xl">
+                {/* Gold Border Offset */}
+                <div className="absolute -inset-4 border border-primary/30 rounded-sm z-0 group-hover:inset-0 transition-all duration-500 ease-out" />
+                
+                {/* Image Container */}
+                <div className="relative z-10 overflow-hidden rounded-sm shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60 z-20" />
                   <img 
                     src="/images/about-image.png" 
                     alt="RQ Team Success" 
-                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                 </div>
               </motion.div>
             </div>
             
-            <div className="md:col-span-8 space-y-8 text-xl md:text-2xl font-light text-gray-300 leading-relaxed pl-0 md:pl-12">
+            <div className="md:col-span-7 space-y-8 text-xl md:text-2xl font-light text-gray-300 leading-relaxed pl-0 md:pl-12">
               <p>
                 RQ is a full-service marketing and media agency based in Saudi Arabia. We combine creativity, strategy, and technology to help brands connect with people in meaningful and authentic ways.
               </p>
