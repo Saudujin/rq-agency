@@ -92,7 +92,7 @@ export default function ClientsPage() {
               Ready to join our <span className="text-primary">success stories?</span>
             </h2>
             <a 
-              href="/#contact" 
+              href="/contact" 
               className="inline-flex items-center gap-4 px-12 py-6 bg-primary text-background text-xl font-bold rounded-full hover:bg-white transition-colors duration-300"
             >
               Start a Project <ArrowRight className="w-6 h-6" />

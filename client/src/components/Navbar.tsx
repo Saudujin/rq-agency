@@ -19,7 +19,7 @@ export default function Navbar() {
     { name: "Services", href: "/services" },
     { name: "Work", href: "/work" },
     { name: "Clients", href: "/clients" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const handleNavClick = (href: string) => {
