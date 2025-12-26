@@ -1,19 +1,31 @@
 import { Twitter, Instagram, Linkedin } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Footer() {
+  const links = [
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Work", href: "/work" },
+    { name: "Clients", href: "/clients" },
+    { name: "Contact", href: "/contact" },
+    { name: "Case Study: Hardee's", href: "/case-study/hardees" },
+  ];
+
   return (
-    <footer id="contact" className="bg-black pt-24 pb-12 border-t border-white/10">
+    <footer className="bg-black pt-24 pb-12 border-t border-white/10">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
           
           {/* Brand Column */}
           <div className="md:col-span-5 space-y-6">
-            <img 
-              src="/images/logo.svg" 
-              alt="RQ Agency" 
-              className="h-12 w-auto invert brightness-0 filter" 
-              style={{ filter: "brightness(0) invert(1)" }}
-            />
+            <Link href="/">
+              <img 
+                src="/images/logo.svg" 
+                alt="RQ Agency" 
+                className="h-12 w-auto invert brightness-0 filter cursor-pointer" 
+                style={{ filter: "brightness(0) invert(1)" }}
+              />
+            </Link>
             <h3 className="text-2xl font-bold text-white leading-tight">
               We create stories that move people.
             </h3>
@@ -26,11 +38,11 @@ export default function Footer() {
           <div className="md:col-span-3">
             <h4 className="text-white font-bold mb-6 uppercase tracking-wider">Important Links</h4>
             <ul className="space-y-4">
-              {["About", "Services", "Portfolio", "Case Studies", "Clients", "Contact"].map((item) => (
-                <li key={item}>
-                  <a href={`#${item.toLowerCase()}`} className="text-gray-400 hover:text-primary transition-colors">
-                    {item}
-                  </a>
+              {links.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-gray-400 hover:text-primary transition-colors cursor-pointer">
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
