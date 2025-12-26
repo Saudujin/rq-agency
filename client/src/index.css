@@ -44,36 +44,38 @@
 }
 
 :root {
-  /* Dynamic Boldness Theme - Dark Mode Default */
-  --primary: oklch(0.65 0.25 280); /* Vivid Purple/Violet */
-  --primary-foreground: oklch(0.98 0 0);
+  /* RQ Brand Theme - Navy Blue & Yellow */
+  /* Primary Yellow from logo */
+  --primary: oklch(0.85 0.18 85); 
+  --primary-foreground: oklch(0.15 0.05 260);
   
-  --background: oklch(0.12 0.01 280); /* Very Dark Purple/Black */
+  /* Deep Navy Blue Background */
+  --background: oklch(0.18 0.04 260); 
   --foreground: oklch(0.98 0 0);
   
-  --card: oklch(0.15 0.01 280);
+  --card: oklch(0.22 0.04 260);
   --card-foreground: oklch(0.98 0 0);
   
-  --popover: oklch(0.15 0.01 280);
+  --popover: oklch(0.22 0.04 260);
   --popover-foreground: oklch(0.98 0 0);
   
-  --secondary: oklch(0.25 0.02 280);
+  --secondary: oklch(0.25 0.04 260);
   --secondary-foreground: oklch(0.98 0 0);
   
-  --muted: oklch(0.25 0.02 280);
-  --muted-foreground: oklch(0.7 0.01 280);
+  --muted: oklch(0.25 0.04 260);
+  --muted-foreground: oklch(0.7 0.02 260);
   
-  --accent: oklch(0.65 0.25 280);
-  --accent-foreground: oklch(0.98 0 0);
+  --accent: oklch(0.85 0.18 85);
+  --accent-foreground: oklch(0.15 0.05 260);
   
   --destructive: oklch(0.6 0.25 20);
   --destructive-foreground: oklch(0.98 0 0);
   
-  --border: oklch(0.3 0.02 280);
-  --input: oklch(0.3 0.02 280);
-  --ring: oklch(0.65 0.25 280);
+  --border: oklch(0.3 0.04 260);
+  --input: oklch(0.3 0.04 260);
+  --ring: oklch(0.85 0.18 85);
   
-  --radius: 0rem; /* Sharp edges for Brutalist feel */
+  --radius: 0rem;
   
   --font-sans: 'IBM Plex Sans Arabic', sans-serif;
 }
