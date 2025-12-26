@@ -1,15 +1,29 @@
 import { motion } from "framer-motion";
 
 const clients = [
-  "/images/client-1.webp",
-  "/images/client-2.webp",
-  "/images/client-3.webp",
-  "/images/client-4.webp",
-  "/images/client-7.webp",
-  "/images/client-8.webp",
-  "/images/client-9.webp",
-  "/images/client-10.webp",
-  "/images/client-11.webp",
+  "/images/Rq-client-1.webp",
+  "/images/Rq-client-2.webp",
+  "/images/Rq-client-3.webp",
+  "/images/Rq-client-4.webp",
+  "/images/Rq-client-7.webp",
+  "/images/Rq-client-8.webp",
+  "/images/Rq-client-9.webp",
+  "/images/Rq-client-10.webp",
+  "/images/Rq-client-11.webp",
+  "/images/rq-3.webp",
+  "/images/rq-4.webp",
+  "/images/rq-5.webp",
+  "/images/rq-6.webp",
+  "/images/rq-7.webp",
+  "/images/rq-8.webp",
+  "/images/rq-9.webp",
+  "/images/rq-10.webp",
+  "/images/rq-11.webp",
+  "/images/rq-12.webp",
+  "/images/rq3-1.webp",
+  "/images/rq4-1.webp",
+  "/images/rq5-1.webp",
+  "/images/client-extra.png"
 ];
 
 export default function Clients() {
@@ -25,7 +39,7 @@ export default function Clients() {
           </h3>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 items-center justify-items-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center">
           {clients.map((client, index) => (
             <motion.div
               key={index}
@@ -33,12 +47,12 @@ export default function Clients() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="w-full max-w-[160px] aspect-[3/2] flex items-center justify-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors duration-300"
+              className="w-full h-24 flex items-center justify-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors duration-300"
             >
               <img 
                 src={client} 
                 alt={`Client ${index + 1}`} 
-                className="max-w-full max-h-full object-contain"
+                className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
               />
             </motion.div>
           ))}
