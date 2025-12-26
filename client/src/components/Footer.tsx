@@ -8,7 +8,7 @@ export default function Footer() {
     { name: "Work", href: "/work" },
     { name: "Clients", href: "/clients" },
     { name: "Contact", href: "/contact" },
-    { name: "Case Study: Hardee's", href: "/case-study/hardees" },
+    { name: "Case Study", href: "/case-study/hardees" },
   ];
 
   return (
