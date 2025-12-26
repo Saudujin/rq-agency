@@ -27,13 +27,32 @@ export default function AboutPage() {
       {/* Who We Are */}
       <section className="py-24 border-t border-white/5">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-            <div className="md:col-span-4">
-              <h2 className="text-sm font-bold text-primary uppercase tracking-widest mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            <div className="md:col-span-4 relative">
+              <h2 className="text-sm font-bold text-primary uppercase tracking-widest mb-8">
                 Who We Are
               </h2>
+              
+              {/* Image with Frame */}
+              <motion.div 
+                initial={{ opacity: 0, rotate: -5, scale: 0.9 }}
+                whileInView={{ opacity: 1, rotate: -3, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="relative z-10"
+              >
+                <div className="absolute inset-0 border-2 border-primary translate-x-4 translate-y-4 rounded-lg z-0" />
+                <div className="relative z-10 rounded-lg overflow-hidden border border-white/10 shadow-2xl">
+                  <img 
+                    src="/images/about-image.png" 
+                    alt="RQ Team Success" 
+                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </motion.div>
             </div>
-            <div className="md:col-span-8 space-y-8 text-xl md:text-2xl font-light text-gray-300 leading-relaxed">
+            
+            <div className="md:col-span-8 space-y-8 text-xl md:text-2xl font-light text-gray-300 leading-relaxed pl-0 md:pl-12">
               <p>
                 RQ is a full-service marketing and media agency based in Saudi Arabia. We combine creativity, strategy, and technology to help brands connect with people in meaningful and authentic ways.
               </p>
