@@ -12,35 +12,42 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black pt-24 pb-12 border-t border-white/10">
-      <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+    <footer className="bg-[#050B14] pt-32 pb-12 border-t border-white/5 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50" />
+      <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" />
+      
+      <div className="container relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
           
           {/* Brand Column */}
-          <div className="md:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-8">
             <Link href="/">
               <img 
                 src="/images/logo.svg" 
                 alt="RQ Agency" 
-                className="h-12 w-auto invert brightness-0 filter cursor-pointer" 
+                className="h-16 w-auto invert brightness-0 filter cursor-pointer opacity-90 hover:opacity-100 transition-opacity" 
                 style={{ filter: "brightness(0) invert(1)" }}
               />
             </Link>
-            <h3 className="text-2xl font-bold text-white leading-tight">
-              We create stories that move people.
+            <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight tracking-tight">
+              We create stories that <br/><span className="text-primary">move people.</span>
             </h3>
-            <p className="text-gray-400 max-w-md">
+            <p className="text-gray-400 max-w-md text-lg leading-relaxed font-light">
               A full-service marketing and media agency helping brands grow through creativity, strategy, and innovation.
             </p>
           </div>
 
           {/* Links Column */}
-          <div className="md:col-span-3">
-            <h4 className="text-white font-bold mb-6 uppercase tracking-wider">Important Links</h4>
+          <div className="lg:col-span-3 lg:col-start-7">
+            <h4 className="text-white font-bold mb-8 text-lg tracking-wider flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-primary"></span>
+              EXPLORE
+            </h4>
             <ul className="space-y-4">
               {links.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-gray-400 hover:text-primary transition-colors cursor-pointer">
+                  <Link href={link.href} className="text-gray-400 hover:text-primary hover:pl-2 transition-all duration-300 cursor-pointer block text-lg">
                     {link.name}
                   </Link>
                 </li>
@@ -49,41 +56,64 @@ export default function Footer() {
           </div>
 
           {/* Contact Column */}
-          <div className="md:col-span-4">
-            <h4 className="text-white font-bold mb-6 uppercase tracking-wider">Contact Us</h4>
-            <ul className="space-y-4 text-gray-400">
-              <li>
-                <a href="mailto:info@rq.com.sa" className="hover:text-primary transition-colors">
+          <div className="lg:col-span-3">
+            <h4 className="text-white font-bold mb-8 text-lg tracking-wider flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-primary"></span>
+              CONNECT
+            </h4>
+            <ul className="space-y-6 text-gray-400">
+              <li className="group">
+                <span className="block text-xs uppercase tracking-widest text-gray-600 mb-1 group-hover:text-primary transition-colors">Email</span>
+                <a href="mailto:info@rq.com.sa" className="text-xl text-white hover:text-primary transition-colors font-medium">
                   info@rq.com.sa
                 </a>
               </li>
-              <li>Riyadh, Saudi Arabia</li>
-              <li>
-                <a href="tel:0550587977" className="hover:text-primary transition-colors">
+              <li className="group">
+                <span className="block text-xs uppercase tracking-widest text-gray-600 mb-1 group-hover:text-primary transition-colors">Phone</span>
+                <a href="tel:0550587977" className="text-xl text-white hover:text-primary transition-colors font-medium">
                   0550587977
                 </a>
               </li>
+              <li className="group">
+                <span className="block text-xs uppercase tracking-widest text-gray-600 mb-1 group-hover:text-primary transition-colors">Location</span>
+                <span className="text-xl text-white font-medium">Riyadh, Saudi Arabia</span>
+              </li>
             </ul>
 
-            <div className="flex gap-4 mt-8">
-              <a href="https://x.com/rqmarketing_?s=21&t=zqo9xIkDYvxTWGPc23v41Q" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-black transition-all">
-                <Twitter size={18} />
-              </a>
-              <a href="https://www.instagram.com/rqmarketing_?igsh=ZWs0cjd4cHF5YnQy" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-black transition-all">
-                <Instagram size={18} />
-              </a>
-              <a href="https://www.tiktok.com/@rqmarketing?_t=ZS-8wVqhknj6UE&_r=1" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-black transition-all">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /></svg>
-              </a>
-              <a href="https://www.linkedin.com/company/rq-agency/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-black transition-all">
-                <Linkedin size={18} />
+            <div className="flex gap-4 mt-10">
+              {[
+                { icon: Twitter, href: "https://x.com/rqmarketing_?s=21&t=zqo9xIkDYvxTWGPc23v41Q" },
+                { icon: Instagram, href: "https://www.instagram.com/rqmarketing_?igsh=ZWs0cjd4cHF5YnQy" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/rq-agency/" }
+              ].map((social, index) => (
+                <a 
+                  key={index}
+                  href={social.href} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-black hover:border-primary transition-all duration-300 group"
+                >
+                  <social.icon size={20} className="group-hover:scale-110 transition-transform" />
+                </a>
+              ))}
+              <a 
+                href="https://www.tiktok.com/@rqmarketing?_t=ZS-8wVqhknj6UE&_r=1" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-black hover:border-primary transition-all duration-300 group"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 group-hover:scale-110 transition-transform"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /></svg>
               </a>
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-600 text-sm font-light">
           <p>&copy; {new Date().getFullYear()} RQ Agency. All rights reserved.</p>
+          <div className="flex gap-8">
+            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+          </div>
         </div>
       </div>
     </footer>
