@@ -1,18 +1,14 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [location] = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -29,74 +25,81 @@ export default function Navbar() {
     const element = document.querySelector(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
+      setIsMenuOpen(false);
     }
   };
 
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent",
-        isScrolled ? "bg-background/80 backdrop-blur-md border-border py-4" : "bg-transparent py-6"
-      )}
-    >
-      <div className="container flex items-center justify-between">
-        <Link href="/" className="relative z-50">
-          <img 
-            src="/images/logo.svg" 
-            alt="RQ Agency" 
-            className="h-10 w-auto invert brightness-0 filter" 
-            style={{ filter: "brightness(0) invert(1)" }}
-          />
-        </Link>
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: "circOut" }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled ? "py-4 bg-background/80 backdrop-blur-lg border-b border-white/5" : "py-8 bg-transparent"
+        }`}
+      >
+        <div className="container flex items-center justify-between">
+          <Link href="/" className="relative z-50 group">
+            <img 
+              src="/images/logo.svg" 
+              alt="RQ Agency" 
+              className="h-10 w-auto invert brightness-0 filter transition-transform duration-300 group-hover:scale-110" 
+              style={{ filter: "brightness(0) invert(1)" }}
+            />
+          </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <button
-              key={link.name}
-              onClick={() => scrollToSection(link.href)}
-              className="text-sm font-medium uppercase tracking-widest hover:text-primary transition-colors relative group"
-            >
-              {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </button>
-          ))}
-          <Button 
-            variant="default" 
-            className="rounded-none bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-wider px-6"
-            onClick={() => scrollToSection("#contact")}
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-12">
+            {navLinks.map((link) => (
+              <button
+                key={link.name}
+                onClick={() => scrollToSection(link.href)}
+                className="text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-primary transition-colors relative group overflow-hidden"
+              >
+                <span className="relative z-10">{link.name}</span>
+                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile Toggle */}
+          <button
+            className="md:hidden relative z-50 text-white"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            Let's Talk
-          </Button>
+            {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
+          </button>
         </div>
+      </motion.nav>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="md:hidden relative z-50 text-foreground"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-
-        {/* Mobile Navigation Overlay */}
-        <div
-          className={cn(
-            "fixed inset-0 bg-background z-40 flex flex-col items-center justify-center gap-8 transition-transform duration-500 ease-in-out md:hidden",
-            isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
-          )}
-        >
-          {navLinks.map((link) => (
-            <button
-              key={link.name}
-              onClick={() => scrollToSection(link.href)}
-              className="text-3xl font-bold uppercase tracking-widest hover:text-primary transition-colors"
-            >
-              {link.name}
-            </button>
-          ))}
-        </div>
-      </div>
-    </nav>
+      {/* Fullscreen Menu Overlay */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 bg-background flex items-center justify-center"
+          >
+            <div className="flex flex-col gap-8 text-center">
+              {navLinks.map((link, index) => (
+                <motion.button
+                  key={link.name}
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 50, opacity: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  onClick={() => scrollToSection(link.href)}
+                  className="text-5xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 hover:to-primary transition-all"
+                >
+                  {link.name}
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
