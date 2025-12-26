@@ -33,8 +33,8 @@ export default function Services() {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="min-w-[280px] md:min-w-0 snap-center group relative bg-white/5 border border-white/10 p-8 md:p-10 hover:bg-primary hover:border-primary transition-all duration-300 flex items-center justify-center text-center min-h-[180px] md:min-h-[200px]"
             >
               <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-black transition-colors duration-300">

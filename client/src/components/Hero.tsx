@@ -11,9 +11,9 @@ export default function Hero() {
       {/* Content */}
       <div className="container relative z-10 flex flex-col items-center justify-center text-center">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative"
         >
           <h1 className="text-[12vw] md:text-[10vw] font-black leading-[0.8] tracking-tighter text-white">
@@ -26,7 +26,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-12 text-xl md:text-2xl text-gray-400 max-w-2xl font-light tracking-wide"
         >
           Combining creativity, strategy, and technology to help brands connect with people in meaningful ways.
@@ -37,7 +37,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
+        transition={{ delay: 0.5, duration: 0.8 }}
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
       >
         <div className="w-[1px] h-24 bg-gradient-to-b from-primary to-transparent" />

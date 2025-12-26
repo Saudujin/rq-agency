@@ -8,10 +8,10 @@ export default function About() {
       <div className="container relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-7xl font-black mb-4 md:mb-8 tracking-tighter">
               WHO <span className="text-primary">WE ARE</span>
